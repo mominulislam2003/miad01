@@ -14,11 +14,11 @@ const Hero = () => {
         
         <div>
           <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
-            <span style={{ display: 'block' }}>I am {portfolioData.bio.name}.</span>
+            <span style={{ display: 'block' }}> {portfolioData.bio.name}.</span>
             <span className="text-gradient">{portfolioData.bio.description}</span>
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.125rem', marginBottom: '2rem', maxWidth: '600px', lineHeight: 1.6 }}>
-            {portfolioData.bio.role} blending aesthetic intuition with engineering rigor to build the next generation of web applications.
+            {portfolioData.bio.role} 
           </p>
           
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
