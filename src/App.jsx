@@ -33,7 +33,7 @@ function App() {
         zIndex: 9999
       }}>
         <img 
-          src="/IMG_0460.png" 
+          src="/avater.png" 
           alt="Loading Logo" 
           style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '16px', marginBottom: '2rem', animation: 'pulseGlow 1.5s infinite' }} 
         />

@@ -29,7 +29,7 @@ const Navbar = () => {
         padding: '1rem 2rem'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold', fontSize: '1.25rem' }}>
-          <img src="/IMG_0460.png" alt="Logo" style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '8px' }} />
+          <img src="/avater.png" alt="Logo" style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '8px' }} />
         </div>
 
         <div className="status-badge" style={{
