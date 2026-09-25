@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+
+const NAV_ITEMS = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Contact'];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -9,6 +11,15 @@ const Navbar = () => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close drawer on resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) setMenuOpen(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -28,52 +39,48 @@ const Navbar = () => {
         justifyContent: 'space-between',
         padding: '1rem 2rem'
       }}>
+        {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold', fontSize: '1.25rem' }}>
           <img src="/avater.png" alt="Logo" style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '8px' }} />
         </div>
 
-        <div className="status-badge" style={{
-          display: 'none', // Hidden on mobile by default, shown via media queries usually
-          alignItems: 'center',
-          gap: '0.5rem',
-          fontSize: '0.875rem',
-          padding: '0.25rem 0.75rem',
-          borderRadius: '999px',
-          background: 'rgba(0, 240, 255, 0.1)',
-          border: '1px solid rgba(0, 240, 255, 0.3)',
-          color: 'var(--accent-cyan)'
-        }}>
+        {/* Desktop Nav Links — hidden on mobile via CSS */}
+        <div className="nav-desktop-links">
+          {NAV_ITEMS.map(item => (
+            <a key={item} href={`#${item.toLowerCase()}`}>
+              {item}
+            </a>
+          ))}
+        </div>
+
+        {/* Status badge — hidden on mobile via CSS */}
+        <div className="nav-status-badge">
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent-cyan)', boxShadow: '0 0 8px var(--accent-cyan)' }} />
           Available for Hire
         </div>
 
-        <button 
+        {/* Hamburger — visible on mobile via CSS */}
+        <button
+          className="nav-hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
-          style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}
+          aria-label="Toggle navigation menu"
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
-      
+
+      {/* Mobile Drawer */}
       {menuOpen && (
-        <div className="glass-panel" style={{
-          position: 'absolute',
-          top: '100%',
-          left: 0,
-          right: 0,
-          padding: '1rem',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-          borderTop: 'none',
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0
-        }}>
-          {['Home', 'About', 'Skills', 'Projects', 'Experience', 'Contact'].map(item => (
-            <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenuOpen(false)} style={{ padding: '0.5rem 1rem' }}>
+        <div className="glass-panel mobile-drawer">
+          {NAV_ITEMS.map(item => (
+            <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenuOpen(false)}>
               {item}
             </a>
           ))}
+          <div className="nav-status-badge" style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5rem' }}>
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent-cyan)', boxShadow: '0 0 8px var(--accent-cyan)' }} />
+            Available for Hire
+          </div>
         </div>
       )}
     </header>

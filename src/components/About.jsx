@@ -8,7 +8,7 @@ const About = () => {
         <span className="text-gradient">System</span> Profile
       </h2>
       
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+      <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
         
         <div className="glass-panel" style={{ padding: '2rem' }}>
           <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--accent-cyan)' }}>Biography</h3>
@@ -34,7 +34,7 @@ const About = () => {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             <StatCard val={portfolioData.bio.stats.yearsOfExperience} label="Years Exp" suffix="+" />
             <StatCard val={portfolioData.bio.stats.completedProjects} label="Projects" suffix="+" />
           </div>

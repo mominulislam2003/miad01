@@ -4,7 +4,7 @@ import { ArrowUp } from 'lucide-react';
 const Footer = () => {
   return (
     <footer style={{ borderTop: '1px solid var(--border-glass)', padding: '2rem 0', marginTop: '4rem' }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+      <div className="container footer-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         
         <div style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
           &copy; {new Date().getFullYear()} Cyberport. All systems operational.

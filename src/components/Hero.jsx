@@ -4,24 +4,24 @@ import { Github, Linkedin, Twitter, ChevronRight } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="home" className="section container" style={{ 
-      minHeight: '100vh', 
-      display: 'flex', 
+    <section id="home" className="section container hero-section" style={{
+      minHeight: '100vh',
+      display: 'flex',
       alignItems: 'center',
-      paddingTop: '6rem' 
+      paddingTop: '6rem'
     }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
-        
+      <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center', width: '100%' }}>
+
         <div>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
+          <h1 className="hero-heading" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
             <span style={{ display: 'block' }}> {portfolioData.bio.name}.</span>
             <span className="text-gradient">{portfolioData.bio.description}</span>
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.125rem', marginBottom: '2rem', maxWidth: '600px', lineHeight: 1.6 }}>
-            {portfolioData.bio.role} 
+            {portfolioData.bio.role}
           </p>
-          
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
+
+          <div className="hero-cta" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
             <a href="#projects" className="btn btn-primary">
               View Projects <ChevronRight size={18} />
             </a>
@@ -29,8 +29,8 @@ const Hero = () => {
               Contact Me
             </a>
           </div>
-          
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
+
+          <div className="hero-social" style={{ display: 'flex', gap: '1.5rem' }}>
             <a href="#" className="glass-panel" style={{ padding: '0.75rem', borderRadius: '50%', display: 'flex' }}><Github size={20} /></a>
             <a href="#" className="glass-panel" style={{ padding: '0.75rem', borderRadius: '50%', display: 'flex' }}><Linkedin size={20} /></a>
             <a href="#" className="glass-panel" style={{ padding: '0.75rem', borderRadius: '50%', display: 'flex' }}><Twitter size={20} /></a>
@@ -47,11 +47,11 @@ const Hero = () => {
             borderRadius: '50%'
           }}></div>
           <div className="glass-panel" style={{ padding: '1rem', position: 'relative' }}>
-             <img 
-               src="/avater.png" 
-               alt="Hero"
-               style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
-             />
+            <img
+              src="/avater.png"
+              alt="Hero"
+              style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
+            />
           </div>
         </div>
 

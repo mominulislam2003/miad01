@@ -26,15 +26,15 @@ const Contact = () => {
         <span className="text-gradient">Initiate</span> Contact
       </h2>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+      <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
         
         <div className="glass-panel" style={{ padding: '2rem' }}>
           <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--accent-cyan)' }}>Transmission Channel</h3>
           <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>Open to new opportunities and interesting projects. Establish a secure connection below.</p>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem', padding: '1rem', background: 'rgba(0, 240, 255, 0.05)', borderRadius: '8px', border: '1px solid var(--border-glass)' }}>
-            <div style={{ flex: 1, fontFamily: 'var(--font-mono)' }}>{portfolioData.bio.contact.email}</div>
-            <button onClick={handleCopy} className="btn btn-outline" style={{ padding: '0.5rem' }}>
+            <div style={{ flex: 1, fontFamily: 'var(--font-mono)', wordBreak: 'break-all' }}>{portfolioData.bio.contact.email}</div>
+            <button onClick={handleCopy} className="btn btn-outline" style={{ padding: '0.5rem', flexShrink: 0 }}>
               {copied ? <CheckCircle size={18} /> : <Copy size={18} />}
             </button>
           </div>

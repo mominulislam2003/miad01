@@ -15,6 +15,10 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -151,4 +155,328 @@ a:hover {
 /* Utility for code/terminal text */
 .font-mono {
   font-family: var(--font-mono);
+}
+
+/* ===========================
+   Navbar — Desktop & Mobile
+   =========================== */
+
+/* Desktop nav links container: visible on large screens */
+.nav-desktop-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-desktop-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-desktop-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  transition: width 0.3s ease;
+}
+
+.nav-desktop-links a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger button: hidden on desktop, visible on mobile */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Status badge in navbar */
+.nav-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--accent-cyan);
+}
+
+/* Mobile drawer */
+.mobile-drawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  animation: slideDown 0.25s ease-out;
+  z-index: 50;
+}
+
+.mobile-drawer a {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.mobile-drawer a:hover {
+  background: rgba(0, 240, 255, 0.08);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   Responsive — Tablet (≤768px)
+   =========================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  /* Navbar: hide desktop links, show hamburger */
+  .nav-desktop-links {
+    display: none !important;
+  }
+
+  .nav-status-badge {
+    display: none !important;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  /* Hero grid stacks */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+    text-align: center;
+  }
+
+  .hero-cta {
+    justify-content: center !important;
+  }
+
+  .hero-social {
+    justify-content: center !important;
+  }
+
+  /* About grid stacks */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Skills services grid stacks */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Skills filter tabs scrollable */
+  .skills-tabs {
+    justify-content: flex-start !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap !important;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+  }
+
+  .skills-tabs::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .skills-tabs::-webkit-scrollbar-thumb {
+    background: var(--border-glass);
+    border-radius: 4px;
+  }
+
+  /* Projects grid stacks */
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Project modal responsive */
+  .project-modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .project-modal-content img {
+    height: 200px !important;
+  }
+
+  .project-modal-body {
+    padding: 1.5rem !important;
+  }
+
+  .project-modal-title {
+    font-size: 1.5rem !important;
+  }
+
+  /* Contact grid stacks */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Footer vertical stack */
+  .footer-inner {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 1.5rem !important;
+  }
+
+  /* Timeline adjustments */
+  .timeline-line {
+    left: 15px !important;
+  }
+
+  .timeline-card {
+    gap: 1.25rem !important;
+  }
+
+  .timeline-dot {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .timeline-dot-inner {
+    width: 10px !important;
+    height: 10px !important;
+  }
+}
+
+/* ===========================
+   Responsive — Mobile (≤480px)
+   =========================== */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  h2 {
+    font-size: 1.75rem !important;
+  }
+
+  /* Hero tweaks */
+  .hero-section {
+    padding-top: 5rem !important;
+    min-height: auto !important;
+  }
+
+  .hero-heading {
+    font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
+  }
+
+  /* Stat cards 1-column on tiny screens */
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Terminal */
+  .terminal-body {
+    font-size: 0.8rem !important;
+    height: 220px !important;
+    padding: 1rem !important;
+  }
+
+  /* Timeline */
+  .timeline-line {
+    left: 12px !important;
+  }
+
+  .timeline-card {
+    gap: 1rem !important;
+  }
+
+  .timeline-dot {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .timeline-dot-inner {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .timeline-panel {
+    padding: 1rem !important;
+  }
+
+  /* Project modal */
+  .project-modal-overlay {
+    padding: 1rem !important;
+  }
+
+  .project-modal-content img {
+    height: 150px !important;
+  }
+
+  .project-modal-body {
+    padding: 1rem !important;
+  }
+
+  .project-modal-actions {
+    flex-direction: column !important;
+  }
+
+  .project-modal-actions .btn {
+    width: 100%;
+  }
+}
+
+/* Responsive utilities */
+html { scroll-behavior: smooth; }
+
+/* Desktop navigation */
+.desktop-nav { display: flex; gap: 1.5rem; align-items: center; }
+.desktop-nav .nav-link { color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.desktop-nav .nav-link:hover { color: var(--accent-cyan); }
+
+/* Mobile visibility */
+.mobile-btn { display: none; }
+
+@media (max-width: 768px) {
+  .desktop-nav { display: none; }
+  .mobile-btn { display: block; }
+  .status-badge { display: none; }
+  footer .container { flex-direction: column; align-items: center; text-align: center; }
+}
+
+@media (min-width: 769px) {
+  .status-badge { display: flex; }
+}
+
+/* Projects modal adjustments */
+.modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
 }

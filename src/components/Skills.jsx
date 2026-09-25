@@ -16,7 +16,7 @@ const Skills = () => {
       </h2>
 
       <div style={{ marginBottom: '4rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+        <div className="skills-tabs" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
           {categories.map(cat => (
             <button
               key={cat}
@@ -25,7 +25,9 @@ const Skills = () => {
               style={{
                 background: activeTab === cat ? 'var(--accent-violet)' : 'transparent',
                 border: `1px solid ${activeTab === cat ? 'var(--accent-violet)' : 'var(--border-glass)'}`,
-                color: 'white'
+                color: 'white',
+                whiteSpace: 'nowrap',
+                flexShrink: 0
               }}
             >
               {cat}
@@ -43,7 +45,7 @@ const Skills = () => {
       </div>
 
       <h3 style={{ fontSize: '1.75rem', marginBottom: '2rem', textAlign: 'center', color: 'var(--accent-cyan)' }}>Specialized Services</h3>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
+      <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
         {portfolioData.services.map((service, index) => (
           <div key={index} className="glass-panel" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <h4 style={{ fontSize: '1.25rem', color: 'var(--text-main)' }}>{service.title}</h4>

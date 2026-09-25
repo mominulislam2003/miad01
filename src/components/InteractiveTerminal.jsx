@@ -50,12 +50,12 @@ const InteractiveTerminal = () => {
           <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#ffbd2e' }} />
           <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#27c93f' }} />
         </div>
-        <div className="font-mono" style={{ padding: '1.5rem', height: '300px', overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+        <div className="font-mono terminal-body" style={{ padding: '1.5rem', height: '300px', overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
           {history.map((line, i) => (
             <div key={i} style={{ 
               color: line.type === 'error' ? '#ff5f56' : line.type === 'input' ? 'var(--accent-cyan)' : 'var(--text-main)',
               marginBottom: '0.5rem',
-              wordBreak: 'break-all'
+              wordBreak: 'break-word'
             }}>
               {line.text}
             </div>
@@ -73,7 +73,8 @@ const InteractiveTerminal = () => {
                 border: 'none',
                 color: 'white',
                 outline: 'none',
-                width: '100%'
+                width: '100%',
+                fontSize: 'inherit'
               }}
               autoFocus
             />
